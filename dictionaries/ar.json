@@ -1,0 +1,34 @@
+{
+    "navigation": {
+        "home": "الرئيسية",
+        "about": "من نحن",
+        "services": "خدماتنا",
+        "projects": "المشاريع",
+        "news": "الأخبار",
+        "careers": "التوظيف",
+        "contact": "اتصل بنا",
+        "downloads": "مركز التحميل"
+    },
+    "hero": {
+        "slogan": "تميز هندسي لمستقبل حديث",
+        "cta_primary": "مشاريعنا",
+        "cta_secondary": "تواصل معنا"
+    },
+    "sections": {
+        "about_title": "من نحن",
+        "services_title": "خدماتنا",
+        "projects_title": "أبرز المشاريع",
+        "partners_title": "شركاء النجاح"
+    },
+    "contact": {
+        "hq_label": "المقر الرئيسي",
+        "hq_address": "البيضاء – مبنى وزارة الاقتصاد والصناعة سابقًا (مقابل مدرسة الإسراء والمعراج)",
+        "benghazi_label": "فرع بنغازي",
+        "benghazi_address": "مجمع نادي قاريونس التجاري",
+        "tripoli_label": "فرع طرابلس",
+        "tripoli_address": "بجوار مصرف الادخار والاستثمار العقاري",
+        "phone": "218910662991+",
+        "email": "alrawasialiby@gmail.com",
+        "whatsapp": "218910662991+"
+    }
+}

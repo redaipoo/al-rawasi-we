@@ -1,0 +1,35 @@
+{
+    "navigation": {
+        "home": "Home",
+        "about": "About Us",
+        "services": "Services",
+        "projects": "Projects",
+        "news": "News",
+        "careers": "Careers",
+        "contact": "Contact Us",
+        "downloads": "Downloads"
+    },
+    "hero": {
+        "slogan": "Engineering Excellence for a Modern Future",
+        "cta_primary": "Our Projects",
+        "cta_secondary": "Contact Us"
+    },
+    "sections": {
+        "about_title": "Who We Are",
+        "services_title": "Our Services",
+        "projects_title": "Featured Projects",
+        "partners_title": "Our Partners"
+    },
+    "contact": {
+        "hq_label": "Headquarters",
+        "hq_address": "Al-Bayda – Formerly Ministry of Economy & Industry (Opposite Al-Israa wal Mi'raj School)",
+        "benghazi_label": "Benghazi Branch",
+        "benghazi_address": "Garyounis Club Commercial Complex",
+        "tripoli_label": "Tripoli Branch",
+        "tripoli_address": "Next to Real Estate Savings & Investment Bank",
+        "phone": "+218910662991",
+        "email": "alrawasialiby@gmail.com",
+        "whatsapp": "+218910662991",
+        "facebook": "Facebook"
+    }
+}

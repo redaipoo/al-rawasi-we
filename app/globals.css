@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    /* scroll-behavior: smooth; -- REMOVED to prevent conflict with Lenis */
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  /* Arabic Text Rendering Fix - Ensures letters connect properly */
+  [lang="ar"],
+  :lang(ar),
+  .font-arabic {
+    font-feature-settings: "liga" 1, "calt" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Force proper Arabic shaping */
+    font-variant-ligatures: common-ligatures;
+  }
+
+  /* Specific fix for Arabic text in animations */
+  [lang="ar"] h1,
+  [lang="ar"] h2,
+  [lang="ar"] h3,
+  [lang="ar"] p,
+  [lang="ar"] span {
+    unicode-bidi: embed;
+    /* Prevent letter separation in animations */
+    white-space: normal;
+    word-spacing: normal;
+  }
+
+  /* Custom Font Variables will be injected by Next.js Font optimization */
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-6 lg:px-8;
+  }
+}
+
+/* Animation wrapper fix for Arabic */
+[lang="ar"] .inline-block {
+  display: inline;
+}
