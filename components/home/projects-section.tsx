@@ -54,28 +54,6 @@ export function ProjectsSection({ lang }: { lang: Locale }) {
 
         {
             id: 5,
-            title: lang === 'ar' ? "صيانه وتطوير المصرف التجاري الوطني إدارة فروع بنغازي - البركه ليبيا" : "Maintenance and Development of National Commercial Bank - Benghazi Branches Administration - Al-Berka, Libya",
-            category: lang === 'ar' ? "مبنى تجاري" : "Commercial Building",
-            image: "/images/ncb-building.jpg",
-            location: lang === 'ar' ? "ليبيا" : "Libya",
-            year: "",
-            desc: lang === 'ar'
-                ? "إعادة تأهيل وتطوير شامل للمرافق لضمان بيئة عمل متطورة وخدمات بنكية متميزة."
-                : "Comprehensive rehabilitation and development of facilities to ensure a modern work environment and excellent banking services."
-        },
-        {
-            id: 6,
-            title: lang === 'ar' ? "إشراف على تنفيذ فندق 5 نجوم - فندق التلال السياحي" : "Supervision of 5-Star Hotel Execution - Al-Tilal Tourist Hotel",
-            category: lang === 'ar' ? "سياحي" : "Tourism",
-            image: "/images/al-tilal-hotel.jpg",
-            location: lang === 'ar' ? "البيضاء، ليبيا" : "Al Bayda, Libya",
-            year: "",
-            desc: lang === 'ar'
-                ? "الإشراف الهندسي الدقيق على تنفيذ مشروع فندق سياحي فاخر وفق أعلى معايير الجودة العالمية."
-                : "Precise engineering supervision of a luxury tourist hotel execution according to the highest global quality standards."
-        },
-        {
-            id: 7,
             title: lang === 'ar' ? "مصرف ليبيا المركزي / شحات" : "Central Bank of Libya / Shahat",
             category: lang === 'ar' ? "مبنى حكومي" : "Government Building",
             image: "/images/cbl-shahat.jpg",
@@ -86,7 +64,7 @@ export function ProjectsSection({ lang }: { lang: Locale }) {
                 : "Design and execution of the Central Bank branch building according to the latest security and structural standards."
         },
         {
-            id: 8,
+            id: 6,
             title: lang === 'ar' ? "المصرف التجاري الوطني - فرع الفائدية" : "National Commercial Bank - Al-Faidiya Branch",
             category: lang === 'ar' ? "مبنى مصرفي" : "Banking Building",
             image: "/images/ncb-faidiya.jpg",
@@ -97,10 +75,11 @@ export function ProjectsSection({ lang }: { lang: Locale }) {
                 : "Construction of a new building - Al-Faidiya, Libya"
         },
         {
-            id: 9,
+            id: 7,
             title: lang === 'ar' ? "صيانه وتحوير مسجد عثمان بن عفان" : "Maintenance and Modification of Othman Bin Affan Mosque",
             category: lang === 'ar' ? "عمارة إسلامية" : "Islamic Architecture",
             image: "/images/othman-mosque.jpg",
+            images: ["/images/othman-mosque.jpg", "/images/othman-mosque-1.jpg"],
             location: lang === 'ar' ? "البيضاء، ليبيا" : "Al Bayda, Libya",
             year: "",
             desc: lang === 'ar'

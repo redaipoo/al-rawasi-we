@@ -72,7 +72,7 @@ function ServiceCard({
             }}
             className="h-full"
         >
-            <Link href={`/${lang}${service.href}`} className="block h-full group">
+            <div className="block h-full group cursor-pointer">
                 <div className="relative h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.06] to-white/[0.02] backdrop-blur-md transition-all duration-500 ease-out hover:border-white/20 hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)]">
 
                     {/* Animated Background Image Layer */}
@@ -128,32 +128,17 @@ function ServiceCard({
 
                         {/* Description */}
                         <p
-                            className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-5 group-hover:text-gray-300 transition-colors duration-400 flex-grow"
+                            className="text-gray-400 text-sm leading-relaxed line-clamp-3 mb-5 group-hover:text-gray-300 transition-colors duration-400 flex-grow"
                             style={{ transform: "translateZ(20px)" }}
                         >
                             {service.desc}
                         </p>
-
-                        {/* Learn More Link */}
-                        <div
-                            className="flex items-center text-sm font-medium text-primary-300/70 group-hover:text-primary-200 transition-all duration-400"
-                            style={{ transform: "translateZ(35px)" }}
-                        >
-                            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-                                {lang === 'ar' ? 'اكتشف المزيد' : 'Learn More'}
-                            </span>
-                            {isRTL ? (
-                                <ArrowLeft className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 group-hover:-translate-x-1 transition-all duration-400" />
-                            ) : (
-                                <ArrowRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-400" />
-                            )}
-                        </div>
                     </div>
 
                     {/* Subtle top highlight */}
                     <div className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-            </Link>
+            </div>
         </motion.div>
     );
 }
@@ -237,16 +222,19 @@ export function ServicesPreview({ lang, limit }: ServicesPreviewProps) {
                     quality={85}
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0a0612]/90 via-[#0d0918]/85 to-[#0a0612]/95" />
+                <div className="absolute inset-0 bg-gradient-to-b from-secondary-dark via-[#0a0612]/90 to-secondary-dark/95" />
                 {/* Subtle noise texture */}
                 <div className="absolute inset-0 opacity-[0.02]" style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
                 }} />
             </motion.div>
 
+            {/* Top Transition Mask */}
+            <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-secondary-dark to-transparent z-10 pointer-events-none" />
+
             {/* Top Architectural Divider */}
             <motion.div
-                className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+                className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent z-20"
                 initial={{ scaleX: 0 }}
                 animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
@@ -287,7 +275,7 @@ export function ServicesPreview({ lang, limit }: ServicesPreviewProps) {
                 </div>
 
                 {/* Services Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5 lg:gap-6 px-2 sm:px-0">
                     {services.slice(0, limit).map((service, idx) => (
                         <motion.div
                             key={idx}
@@ -332,9 +320,12 @@ export function ServicesPreview({ lang, limit }: ServicesPreviewProps) {
                 </motion.div>
             </div>
 
+            {/* Bottom Transition Mask */}
+            <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-secondary-dark to-transparent z-10 pointer-events-none" />
+
             {/* Bottom Divider */}
             <motion.div
-                className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+                className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent z-20"
                 initial={{ scaleX: 0 }}
                 animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut", delay: 1.6 }}

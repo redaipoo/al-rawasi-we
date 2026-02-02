@@ -46,6 +46,7 @@ export function HeroSection({ lang, dict }: HeroSectionProps) {
                         priority
                     />
                 </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background z-[5]" />
             </motion.div>
 
             <div className="container-custom relative z-20 text-center text-white pt-20">
@@ -61,7 +62,7 @@ export function HeroSection({ lang, dict }: HeroSectionProps) {
                             <h1 className="sr-only">{dict.hero.slogan}</h1>
                             <TextReveal
                                 text={dict.hero.slogan}
-                                className="text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight mb-8 drop-shadow-2xl max-w-5xl mx-auto"
+                                className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold font-heading leading-tight mb-6 md:mb-8 drop-shadow-2xl max-w-5xl mx-auto px-2"
                             />
                         </div>
                     </StaggerItem>

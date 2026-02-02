@@ -76,13 +76,17 @@ export function ClientsSection({ lang }: { lang: Locale }) {
     };
 
     return (
-        <section className="py-32 bg-secondary-dark relative group/section overflow-hidden">
+        <section className="py-20 md:py-28 lg:py-32 bg-secondary-dark relative group/section overflow-hidden">
             {/* Background Effects */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-secondary-dark to-secondary-dark" />
             </div>
+
+            {/* Smooth Transition Masks */}
+            <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-secondary-dark to-transparent z-10 pointer-events-none" />
 
             <div className="container-custom relative z-10 mb-16 text-center">
                 <FadeIn direction="up">
@@ -92,7 +96,7 @@ export function ClientsSection({ lang }: { lang: Locale }) {
                 </FadeIn>
 
                 <div className="mb-6">
-                    <TextReveal text={lang === 'ar' ? "نفخر بثقة كبرى المؤسسات" : "Trusted by Major Institutions"} className="justify-center text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white" />
+                    <TextReveal text={lang === 'ar' ? "نفخر بثقة كبرى المؤسسات" : "Trusted by Major Institutions"} className="justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white" />
                 </div>
 
                 <FadeIn delay={0.2}>

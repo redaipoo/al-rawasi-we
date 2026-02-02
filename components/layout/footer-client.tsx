@@ -155,7 +155,6 @@ export function FooterClient({ lang, dict }: FooterClientProps) {
         { key: "about", href: "about" },
         { key: "services", href: "services" },
         { key: "projects", href: "projects" },
-        { key: "careers", href: "careers" },
     ];
 
     const services = [
@@ -179,8 +178,8 @@ export function FooterClient({ lang, dict }: FooterClientProps) {
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
             {/* Main Content */}
-            <div className="container-custom relative z-10 pt-20 pb-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div className="container-custom relative z-10 pt-12 md:pt-16 lg:pt-20 pb-6 md:pb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-16">
                     {/* Brand Section */}
                     <motion.div
                         className="space-y-5"
@@ -266,7 +265,7 @@ export function FooterClient({ lang, dict }: FooterClientProps) {
                         transition={{ duration: 0.6, delay: 0.4 }}
                     >
                         <h3 className="font-heading font-bold text-lg mb-6 text-white relative inline-block">
-                            {lang === 'ar' ? 'تواصل معنا' : 'Contact Info'}
+                            {dict.contact.footer_heading}
                             <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-gradient-to-r from-primary to-transparent" />
                         </h3>
                         <div className="space-y-4 text-sm text-gray-400">
@@ -281,42 +280,19 @@ export function FooterClient({ lang, dict }: FooterClientProps) {
                                 </div>
                             </div>
 
-                            {/* Phone */}
-                            <div className="flex flex-col gap-2 group">
-                                <div className="flex items-center gap-3">
+                            {/* Email Only */}
+                            <div className="flex items-center gap-3 group">
+                                <a
+                                    href={`mailto:${dict.contact.email}`}
+                                    className="flex items-center gap-3 w-full group/email"
+                                >
                                     <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                                        <Phone className="w-4 h-4 text-primary" />
+                                        <Mail className="w-4 h-4 text-primary" />
                                     </div>
-                                    <a href={`tel:${dict.contact.phone.replace('+', '')}`} dir="ltr" className="group-hover:text-white transition-colors hover:underline">
-                                        {dict.contact.phone}
-                                    </a>
-                                </div>
-                                <div className="flex items-center gap-3 pl-12 text-xs">
-                                    <a href={`https://wa.me/${dict.contact.whatsapp.replace('+', '')}`} target="_blank" className="text-green-500 hover:text-green-400 flex items-center gap-1 transition-colors">
-                                        <span>WhatsApp</span>
-                                        <ArrowUpRight className="w-3 h-3" />
-                                    </a>
-                                </div>
-                            </div>
-
-                            {/* Email */}
-                            <div className="flex items-center gap-3 group">
-                                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                                    <Mail className="w-4 h-4 text-primary" />
-                                </div>
-                                <span className="group-hover:text-white transition-colors">{dict.contact.email}</span>
-                            </div>
-
-                            {/* Facebook */}
-                            <div className="flex items-center gap-3 group">
-                                <Link href="https://www.facebook.com/arrawasi.allibiya.co" target="_blank" className="flex items-center gap-3 w-full">
-                                    <div className="w-9 h-9 rounded-lg bg-blue-600/10 flex items-center justify-center shrink-0 group-hover:bg-blue-600/20 transition-colors">
-                                        <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                            <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <span className="group-hover:text-white transition-colors">Facebook</span>
-                                </Link>
+                                    <span className="group-hover/email:text-primary transition-colors truncate">
+                                        {dict.contact.email}
+                                    </span>
+                                </a>
                             </div>
                         </div>
                     </motion.div>

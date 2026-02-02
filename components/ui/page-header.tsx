@@ -6,9 +6,10 @@ interface PageHeaderProps {
     subtitle?: string;
     lang: Locale;
     bgImage?: string;
+    withBlur?: boolean;
 }
 
-export function PageHeader({ title, subtitle, lang, bgImage }: PageHeaderProps) {
+export function PageHeader({ title, subtitle, lang, bgImage, withBlur }: PageHeaderProps) {
     return (
         <div className="relative h-[60vh] min-h-[400px] flex items-center justify-center bg-primary overflow-hidden">
             {/* Background Image */}
@@ -24,8 +25,13 @@ export function PageHeader({ title, subtitle, lang, bgImage }: PageHeaderProps) 
                 </div>
             )}
 
-            {/* Overlay Gradient - Darker at bottom for legibility, but clearer overall */}
+            {/* Overlay Gradient */}
             <div className={`absolute inset-0 ${bgImage ? 'bg-gradient-to-b from-black/20 via-black/40 to-black/60' : 'bg-gradient-to-r from-primary to-primary-light'} z-10`} />
+
+            {/* Optional Bottom Blur/Fade */}
+            {withBlur && (
+                <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
+            )}
 
             {/* Pattern Overlay */}
             <div className="absolute inset-0 z-10 opacity-10" style={{

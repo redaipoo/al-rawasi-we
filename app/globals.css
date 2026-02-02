@@ -58,15 +58,86 @@
   }
 
   /* Custom Font Variables will be injected by Next.js Font optimization */
+
+  /* Mobile responsiveness improvements */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Ensure images don't overflow on mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 @layer components {
   .container-custom {
     @apply container mx-auto px-4 md:px-6 lg:px-8;
+    max-width: 100%;
   }
 }
 
 /* Animation wrapper fix for Arabic */
 [lang="ar"] .inline-block {
   display: inline;
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 640px) {
+
+  /* Reduce padding on mobile */
+  .container-custom {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Fix text overflow */
+  h1,
+  h2,
+  h3,
+  h4 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Ensure buttons are tappable */
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Fix grid gaps */
+  .gap-8 {
+    gap: 1.5rem;
+  }
+
+  .gap-12 {
+    gap: 2rem;
+  }
+
+  /* Improve footer spacing */
+  footer .grid {
+    gap: 2rem;
+  }
+}
+
+/* Tablet fixes */
+@media (max-width: 768px) {
+
+  /* Improve section padding */
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Fix button sizing */
+  .min-w-\[200px\] {
+    min-width: 160px;
+  }
 }

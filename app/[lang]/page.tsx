@@ -1,7 +1,7 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { ServicesPreview } from "@/components/home/services-preview";
 import { ClientsSection } from "@/components/home/clients-section";
-import { ProjectsSection } from "@/components/home/projects-section";
+import { PartnersSection } from "@/components/home/partners-section";
 import { Locale } from "@/types";
 import { getDictionary } from "@/dictionaries/get-dictionary";
 
@@ -16,7 +16,7 @@ export default async function HomePage({ params }: { params: { lang: Locale } })
             <ClientsSection lang={params.lang} />
             {/* Limit Services to 4 (approx half of 9) */}
             <ServicesPreview lang={params.lang} limit={4} />
-            <ProjectsSection lang={params.lang} />
+            <PartnersSection lang={params.lang} />
             <CTASection lang={params.lang} />
         </div>
     );

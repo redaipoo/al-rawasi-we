@@ -13,6 +13,7 @@ interface ProjectSceneProps {
         title: string;
         category: string;
         image: string;
+        images?: string[]; // Optional array for multiple images
         location: string;
         year: string;
         desc: string;
@@ -25,6 +26,9 @@ export function ProjectScene({ project, index, lang }: ProjectSceneProps) {
     const sectionRef = useRef<HTMLDivElement>(null);
     const isRTL = lang === 'ar';
     const isEven = index % 2 === 0;
+
+    // Check if project has multiple images
+    const hasMultipleImages = project.images && project.images.length > 1;
 
     // Scroll Animations
     const { scrollYProgress } = useScroll({
@@ -68,29 +72,71 @@ export function ProjectScene({ project, index, lang }: ProjectSceneProps) {
                             isEven ? "translate-x-4 translate-y-4" : "-translate-x-4 translate-y-4"
                         )} />
 
-                        {/* Image Container */}
-                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-black/50 bg-secondary-dark/50">
-                            <motion.div style={{ scale: imageScale, y: imageParallax }} className="relative h-[120%] w-full -top-[10%]">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover transition-all duration-700 group-hover:grayscale-[0.5]"
-                                />
-                                <div className="absolute inset-0 bg-secondary-dark/20 mix-blend-multiply group-hover:bg-transparent transition-colors duration-700" />
-                            </motion.div>
-
-                            {/* Glass Overlay Details */}
-                            <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                                <div className="flex items-center gap-4 text-white">
-                                    <span className="flex items-center gap-2 text-sm font-medium">
-                                        <MapPin className="w-4 h-4 text-accent" />
-                                        {project.location}
-                                    </span>
+                        {/* Multi-Image Layout or Single Image */}
+                        {hasMultipleImages ? (
+                            <div className="relative flex gap-3 md:gap-4">
+                                {/* First Image - Larger */}
+                                <div className="relative w-[60%] aspect-[3/4] overflow-hidden rounded-[1.5rem] shadow-2xl shadow-black/50 bg-secondary-dark/50 group/img1">
+                                    <motion.div style={{ scale: imageScale }} className="relative h-full w-full">
+                                        <Image
+                                            src={project.images![0]}
+                                            alt={`${project.title} - 1`}
+                                            fill
+                                            className="object-cover transition-all duration-700 group-hover/img1:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-secondary-dark/20 mix-blend-multiply group-hover/img1:bg-transparent transition-colors duration-700" />
+                                    </motion.div>
                                 </div>
-                                <span className="text-white/60 text-sm font-bold tracking-widest">{project.year}</span>
+
+                                {/* Second Image - Smaller with offset */}
+                                <div className="relative w-[45%] aspect-[3/4] overflow-hidden rounded-[1.5rem] shadow-2xl shadow-black/50 bg-secondary-dark/50 group/img2 -ml-[8%] mt-8 md:mt-12 border-4 border-secondary-dark">
+                                    <motion.div style={{ scale: imageScale, y: imageParallax }} className="relative h-full w-full">
+                                        <Image
+                                            src={project.images![1]}
+                                            alt={`${project.title} - 2`}
+                                            fill
+                                            className="object-cover transition-all duration-700 group-hover/img2:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-secondary-dark/20 mix-blend-multiply group-hover/img2:bg-transparent transition-colors duration-700" />
+                                    </motion.div>
+                                </div>
+
+                                {/* Glass Overlay Details - Positioned at bottom of first image */}
+                                <div className="absolute bottom-4 left-4 right-[42%] flex items-center justify-between p-4 md:p-5 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                                    <div className="flex items-center gap-3 text-white">
+                                        <span className="flex items-center gap-2 text-xs md:text-sm font-medium">
+                                            <MapPin className="w-3 h-3 md:w-4 md:h-4 text-accent" />
+                                            {project.location}
+                                        </span>
+                                    </div>
+                                    <span className="text-white/60 text-xs font-bold tracking-widest">{project.year}</span>
+                                </div>
                             </div>
-                        </div>
+                        ) : (
+                            /* Single Image Layout */
+                            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-black/50 bg-secondary-dark/50">
+                                <motion.div style={{ scale: imageScale, y: imageParallax }} className="relative h-[120%] w-full -top-[10%]">
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
+                                        fill
+                                        className="object-cover transition-all duration-700 group-hover:grayscale-[0.5]"
+                                    />
+                                    <div className="absolute inset-0 bg-secondary-dark/20 mix-blend-multiply group-hover:bg-transparent transition-colors duration-700" />
+                                </motion.div>
+
+                                {/* Glass Overlay Details */}
+                                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                                    <div className="flex items-center gap-4 text-white">
+                                        <span className="flex items-center gap-2 text-sm font-medium">
+                                            <MapPin className="w-4 h-4 text-accent" />
+                                            {project.location}
+                                        </span>
+                                    </div>
+                                    <span className="text-white/60 text-sm font-bold tracking-widest">{project.year}</span>
+                                </div>
+                            </div>
+                        )}
 
                         {/* Floating Number (Behind) */}
                         <div className={cn(

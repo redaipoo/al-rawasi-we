@@ -121,94 +121,79 @@ export function ContactContent({ dict, lang }: ContactContentProps) {
                                 </p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {/* Addresses */}
-                                <div className="group p-8 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-primary/30 transition-all duration-300 md:col-span-2">
-                                    <div className="flex items-start gap-6">
-                                        <div className="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
-                                            <MapPin className="w-7 h-7" />
+                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                {/* Address Information Card */}
+                                <div className="lg:col-span-2 group p-10 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 hover:border-primary/40 transition-all duration-500 shadow-2xl relative overflow-hidden">
+                                    {/* Decorative background element */}
+                                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-[80px] group-hover:bg-primary/20 transition-colors duration-500" />
+
+                                    <div className="relative z-10">
+                                        <div className="flex items-center gap-6 mb-10">
+                                            <div className="w-16 h-16 bg-gradient-to-br from-primary to-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:rotate-6 transition-transform">
+                                                <MapPin className="w-8 h-8" />
+                                            </div>
+                                            <div>
+                                                <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-primary transition-colors">
+                                                    {lang === 'ar' ? 'مواقعنا' : 'Our Locations'}
+                                                </h3>
+                                                <p className="text-gray-500 text-sm uppercase tracking-widest">{lang === 'ar' ? 'تفضل بزيارتنا' : 'Visit Us'}</p>
+                                            </div>
                                         </div>
-                                        <div className="space-y-6 w-full pt-1">
-                                            {/* HQ - Clickable */}
-                                            <a
-                                                href="https://maps.app.goo.gl/bLZxSENpxEtcQ5hk7"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="block p-4 -m-4 rounded-xl hover:bg-white/5 transition-colors group/link"
-                                            >
-                                                <div className="flex items-center gap-2 mb-2">
-                                                    <h3 className="font-bold text-white text-lg group-hover/link:text-primary transition-colors">{dict.contact.hq_label}</h3>
-                                                    <ArrowUpRight className="w-4 h-4 text-gray-500 group-hover/link:text-primary transition-colors opacity-0 group-hover/link:opacity-100" />
-                                                </div>
-                                                <p className="text-gray-400 text-base leading-relaxed">{dict.contact.hq_address}</p>
-                                            </a>
 
-                                            <div className="w-full h-px bg-white/10" />
-
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                <div>
-                                                    <h3 className="font-bold text-white mb-2">{dict.contact.benghazi_label}</h3>
-                                                    <p className="text-gray-400 text-sm">{dict.contact.benghazi_address}</p>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                            {/* HQ */}
+                                            <div className="space-y-4">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-2 h-2 rounded-full bg-primary" />
+                                                    <h4 className="font-bold text-white text-lg">{dict.contact.hq_label}</h4>
                                                 </div>
-                                                <div>
-                                                    <h3 className="font-bold text-white mb-2">{dict.contact.tripoli_label}</h3>
-                                                    <p className="text-gray-400 text-sm">{dict.contact.tripoli_address}</p>
+                                                <p className="text-gray-400 leading-relaxed pl-4 border-l border-white/10 group-hover:border-primary/30 transition-colors">
+                                                    {dict.contact.hq_address}
+                                                </p>
+                                            </div>
+
+                                            <div className="space-y-8">
+                                                {/* Benghazi */}
+                                                <div className="space-y-3">
+                                                    <h4 className="font-bold text-white uppercase text-xs tracking-widest text-primary/80">{dict.contact.benghazi_label}</h4>
+                                                    <p className="text-gray-400 text-sm leading-relaxed">{dict.contact.benghazi_address}</p>
+                                                </div>
+                                                {/* Tripoli */}
+                                                <div className="space-y-3">
+                                                    <h4 className="font-bold text-white uppercase text-xs tracking-widest text-primary/80">{dict.contact.tripoli_label}</h4>
+                                                    <p className="text-gray-400 text-sm leading-relaxed">{dict.contact.tripoli_address}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Phone & WhatsApp */}
-                                <div className="group p-8 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
-                                    <div className="flex flex-col h-full">
-                                        <div className="flex items-center gap-5 mb-6">
-                                            <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
-                                                <Phone className="w-6 h-6" />
-                                            </div>
-                                            <h3 className="font-bold text-white text-xl">{lang === 'ar' ? 'الهاتف & واتساب' : 'Phone & WhatsApp'}</h3>
+                                {/* Main Contact Card (Email) */}
+                                <div className="group p-10 rounded-[2.5rem] bg-gradient-to-br from-primary/20 to-purple-900/20 border border-primary/20 backdrop-blur-xl hover:bg-primary/30 hover:border-primary/40 transition-all duration-500 shadow-2xl relative flex flex-col items-center justify-center text-center">
+                                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2.5rem]" />
+
+                                    <div className="relative z-10 w-full">
+                                        <div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center text-primary mx-auto mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/5">
+                                            <Mail className="w-10 h-10" />
                                         </div>
 
-                                        <div className="flex flex-col gap-4 mt-auto">
-                                            <a href={`tel:${dict.contact.phone.replace('+', '')}`} className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-primary/20 hover:text-primary text-gray-300 transition-all" dir="ltr">
-                                                <span className="font-medium text-lg">{dict.contact.phone}</span>
-                                                <span className="text-xs bg-white/10 px-2 py-1 rounded">Call</span>
-                                            </a>
+                                        <h3 className="text-2xl font-bold text-white mb-4">
+                                            {lang === 'ar' ? 'راسلنا مباشرة' : 'Email Us'}
+                                        </h3>
 
-                                            <a href={`https://wa.me/${dict.contact.whatsapp.replace('+', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 rounded-lg bg-green-500/10 hover:bg-green-500/20 text-green-500 transition-all">
-                                                <span className="font-medium text-lg">WhatsApp</span>
-                                                <ArrowUpRight className="w-5 h-5" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                        <p className="text-gray-400 text-sm mb-10 leading-relaxed max-w-[200px] mx-auto">
+                                            {lang === 'ar'
+                                                ? 'نحن هنا للرد على كافة استفساراتكم عبر البريد الإلكتروني'
+                                                : 'We are here to answer all your inquiries via email'}
+                                        </p>
 
-                                {/* Email & Social */}
-                                <div className="group p-8 rounded-3xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
-                                    <div className="flex flex-col h-full">
-                                        <div className="flex items-center gap-5 mb-6">
-                                            <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
-                                                <Mail className="w-6 h-6" />
-                                            </div>
-                                            <h3 className="font-bold text-white text-xl">{lang === 'ar' ? 'تواصل معنا' : 'Connect'}</h3>
-                                        </div>
-
-                                        <div className="flex flex-col gap-4 mt-auto">
-                                            <div className="block p-3 rounded-lg bg-white/5">
-                                                <span className="text-xs text-gray-500 block mb-1">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</span>
-                                                <span className="text-gray-300 font-medium break-all">{dict.contact.email}</span>
-                                            </div>
-
-                                            <a href="https://www.facebook.com/arrawasi.allibiya.co" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 rounded-lg bg-blue-600/10 hover:bg-blue-600/20 text-blue-500 transition-all">
-                                                <div className="flex items-center gap-3">
-                                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                                        <path fillRule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clipRule="evenodd" />
-                                                    </svg>
-                                                    <span className="font-medium lg:text-lg">{dict.contact.facebook || 'Facebook'}</span>
-                                                </div>
-                                                <ArrowUpRight className="w-5 h-5" />
-                                            </a>
-                                        </div>
+                                        <a
+                                            href={`mailto:${dict.contact.email}`}
+                                            className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary hover:bg-primary-light text-white font-bold rounded-2xl transition-all w-full group/btn shadow-xl shadow-primary/20"
+                                        >
+                                            <span className="truncate">{dict.contact.email}</span>
+                                            <ArrowUpRight className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                                        </a>
                                     </div>
                                 </div>
                             </div>

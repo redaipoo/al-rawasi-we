@@ -23,7 +23,7 @@ export default function ServicesPage({ params }: { params: { lang: Locale } }) {
     return (
         <main ref={containerRef} className="relative bg-secondary-dark min-h-screen">
             {/* Cinematic Hero Section */}
-            <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
+            <section className="relative h-[70vh] md:h-[85vh] flex items-center justify-center overflow-hidden">
                 <motion.div
                     style={{ y: yHero, scale: scaleHero, opacity: opacityHero, filter: `blur(${blurHero}px)` }}
                     className="absolute inset-0 z-0"
@@ -49,7 +49,7 @@ export default function ServicesPage({ params }: { params: { lang: Locale } }) {
                     </FadeIn>
                     <TextReveal
                         text={params.lang === 'ar' ? "نبتكر الحلول، نصمم المستقبل" : "Innovating Solutions, Designing the Future"}
-                        className="text-5xl md:text-8xl font-bold font-heading text-white tracking-tighter mb-8 leading-tight drop-shadow-2xl"
+                        className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-bold font-heading text-white tracking-tighter mb-6 md:mb-8 leading-tight drop-shadow-2xl px-2"
                     />
                     <FadeIn direction="up" delay={0.6}>
                         <p className="max-w-3xl mx-auto text-gray-300 text-lg md:text-2xl font-light leading-relaxed opacity-90 italic">
@@ -72,9 +72,9 @@ export default function ServicesPage({ params }: { params: { lang: Locale } }) {
             </section>
 
             {/* Professional Services Narrative Section */}
-            <section className="relative py-32 bg-secondary-dark/40 backdrop-blur-md z-10 border-y border-white/5">
+            <section className="relative py-16 md:py-24 lg:py-32 bg-secondary-dark/40 backdrop-blur-md z-10 border-y border-white/5">
                 <div className="container-custom">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-20 items-center">
                         <FadeIn direction="right" className="relative aspect-[4/3] order-2 lg:order-1">
                             <div className="absolute inset-0 border border-primary/20 rounded-3xl -rotate-2" />
                             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl" />
@@ -94,11 +94,11 @@ export default function ServicesPage({ params }: { params: { lang: Locale } }) {
 
                         <div className="relative z-10 order-1 lg:order-2">
                             <FadeIn direction="up">
-                                <h2 className="text-4xl md:text-6xl font-bold font-heading text-white mb-10 leading-tight">
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-heading text-white mb-6 md:mb-10 leading-tight">
                                     {params.lang === 'ar' ? "فلسفة العمل الهندسية في الرواسي" : "Our Engineering Work Philosophy"}
                                 </h2>
                             </FadeIn>
-                            <div className="space-y-8 text-gray-300 text-lg md:text-xl font-light leading-relaxed">
+                            <div className="space-y-6 md:space-y-8 text-gray-300 text-base md:text-lg lg:text-xl font-light leading-relaxed">
                                 <FadeIn delay={0.2}>
                                     <p>
                                         {params.lang === 'ar'
@@ -137,7 +137,7 @@ export default function ServicesPage({ params }: { params: { lang: Locale } }) {
             </div>
 
             {/* Bottom Section - Future proofing */}
-            <section className="py-32 bg-secondary-dark flex flex-col items-center justify-center text-center px-4">
+            <section className="py-16 md:py-24 lg:py-32 bg-secondary-dark flex flex-col items-center justify-center text-center px-4">
                 <FadeIn direction="up">
                     <h3 className="text-3xl md:text-5xl font-bold text-white mb-8">
                         {params.lang === 'ar' ? "هل لديك مشروع طموح؟" : "Have an Ambitious Project?"}
